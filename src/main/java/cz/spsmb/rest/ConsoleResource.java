@@ -41,7 +41,7 @@ public class ConsoleResource {
         Console consoles = consoleRepository.findById(id);
         return Response.ok().entity(consoles).build();
     }
-
+    @Transactional
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
