@@ -6,13 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "test-console-table")
+@Table(name = "console")
 public class Console implements Serializable {
-
-    public Console(String brand, int year) {
-        this.brand = brand;
-        this.year = year;
-    }
     public Console(){};
 
     @Id
@@ -21,10 +16,15 @@ public class Console implements Serializable {
     long id;
     String brand;
     int year;
-    @OneToMany(mappedBy = "console", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "rating")
     List<Rating> ratingList = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+
+
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //Type type;
+    @ManyToOne
+    @JoinColumn(name = "type_id", nullable = false)
     Type type;
 
     public long getId() {
@@ -58,7 +58,13 @@ public class Console implements Serializable {
     public List<Rating> getRatingList() {
         return ratingList;
     }
+    public int getYear() {
+        return year;
+    }
 
+    public void setYear(int year) {
+        this.year = year;
+    }
     public double getAvgRating(){
         long sum = 0;
         for (Rating r:ratingList) {

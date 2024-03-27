@@ -11,10 +11,19 @@ import java.util.List;
 public class Type implements Serializable {
     @Id
     @Column(name = "type_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     String name;
+    @OneToMany(mappedBy = "id")
+    List<Console> consoleList = new ArrayList<>();
 
+    public List<Console> getConsoleList() {
+        return consoleList;
+    }
+
+    public void setConsoleList(List<Console> consoleList) {
+        this.consoleList = consoleList;
+    }
 
     public long getId() {
         return id;

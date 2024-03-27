@@ -28,6 +28,7 @@ public class ConsoleResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response list() {
         List<Console> consoles = consoleRepository.listAll();
         return Response.ok().entity(consoles).build();
@@ -41,7 +42,6 @@ public class ConsoleResource {
         Console consoles = consoleRepository.findById(id);
         return Response.ok().entity(consoles).build();
     }
-    @Transactional
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -65,6 +65,7 @@ public class ConsoleResource {
         } else {
             Type type = new Type();
             type.setName(consoleDTO.getType());
+            type.getConsoleList().add(console);
             typeRepository.persist(type);
             console.setType(type);
         }

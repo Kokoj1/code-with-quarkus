@@ -16,7 +16,6 @@ public class Rating implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "console_id", nullable = false)
-    @JsonIgnore
     Console console;
 
     public Rating(int rating){

@@ -14,6 +14,7 @@ public class RatingDTO {
     @Override
     public String toString() {
         return "RatingDTO{" +
+
                 ", rating=" + rating +
                 '}';
     }

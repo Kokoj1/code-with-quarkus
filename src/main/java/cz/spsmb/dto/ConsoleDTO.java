@@ -3,7 +3,15 @@ package cz.spsmb.dto;
 public class ConsoleDTO {
     String brand;
     String type;
+    int year;
 
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 
     public String getBrand() {
         return brand;
